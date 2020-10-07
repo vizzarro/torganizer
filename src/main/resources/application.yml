@@ -1,0 +1,15 @@
+spring:
+   application:
+      name: Tournament Organizer
+   h2:
+     console:
+       enabled: true
+       path: /console
+   datasource:
+     url: jdbc:h2:mem:testdb
+     driver-class-name: org.h2.Driver
+     username: sa
+     password: sa   
+version: 1.0.0     
+server:
+   port: 8080
