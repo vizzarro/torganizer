@@ -3,7 +3,7 @@
  */
 package it.vizzarro.torganizer.service;
 
-import java.util.ArrayList;
+import java.beans.Introspector;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +19,7 @@ import it.vizzarro.torganizer.repository.TournamentSpecification;
  *
  */
 @Service
-public class TournamentServiceImpl extends ServiceBase<Tournament,Tournament> implements TournamentService{
+public class TournamentServiceImpl extends CrudServiceImpl<Tournament,TournamentFilter,Tournament,Long> implements TournamentService{
 
 	private TournamentRepo tournamentRepo;
 
@@ -43,11 +43,9 @@ public class TournamentServiceImpl extends ServiceBase<Tournament,Tournament> im
 
 
 	@Override
-	public List<Tournament> findAll(TournamentFilter filter) {
+	public List<Tournament> find(TournamentFilter filter) {
 		
-		List<Tournament> result = new ArrayList<Tournament>();
-		getTournamentRepo().findAll(new TournamentSpecification(filter)).forEach( t -> result.add(t));
-		return result;
+		return getTournamentRepo().findAll(new TournamentSpecification(filter));
 	}
 
 	@Override
@@ -77,6 +75,7 @@ public class TournamentServiceImpl extends ServiceBase<Tournament,Tournament> im
 
 	@Override
 	public void populate(Tournament target, Tournament source) {
+		
 		target.setId(source.getId());
 		target.setCode(source.getCode());
 		target.setName(source.getName());
@@ -89,6 +88,15 @@ public class TournamentServiceImpl extends ServiceBase<Tournament,Tournament> im
 		target.setSite(source.getSite());
 		target.setTimes(source.getTimes());
 		target.setType(source.getType());
+	}
+
+
+
+
+	@Override
+	public List<Tournament> findAll() throws ServiceException {
+		// TODO Auto-generated method stub
+		return getTournamentRepo().findAll(new TournamentSpecification(null));
 	}
 
 

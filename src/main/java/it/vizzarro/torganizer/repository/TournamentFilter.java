@@ -5,11 +5,13 @@ package it.vizzarro.torganizer.repository;
 
 import java.util.Date;
 
+import it.vizzarro.torganizer.service.BaseFilter;
+
 /**
- * @author Utente
+ * @author Alessandro Vizzarro
  *
  */
-public class TournamentFilter {
+public class TournamentFilter extends BaseFilter{
 	
 	private String name;
 	private String code;
