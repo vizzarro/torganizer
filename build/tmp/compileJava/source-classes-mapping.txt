@@ -1,0 +1,58 @@
+it/vizzarro/torganizer/repository/TournamentSpecification.java
+ it.vizzarro.torganizer.repository.TournamentSpecification
+it/vizzarro/torganizer/models/TypeTournament.java
+ it.vizzarro.torganizer.models.TypeTournament
+it/vizzarro/torganizer/repository/TournamentRepo.java
+ it.vizzarro.torganizer.repository.TournamentRepo
+it/vizzarro/torganizer/models/Tournament.java
+ it.vizzarro.torganizer.models.Tournament
+it/vizzarro/torganizer/utils/jsend/JSendData.java
+ it.vizzarro.torganizer.utils.jsend.JSendData
+it/vizzarro/torganizer/controllers/DatabaseLoader.java
+ it.vizzarro.torganizer.controllers.DatabaseLoader
+it/vizzarro/torganizer/models/GameFormula.java
+ it.vizzarro.torganizer.models.GameFormula
+it/vizzarro/torganizer/models/ModeTournament.java
+ it.vizzarro.torganizer.models.ModeTournament
+it/vizzarro/torganizer/repository/TournamentFilter.java
+ it.vizzarro.torganizer.repository.TournamentFilter
+it/vizzarro/torganizer/TorganizerApplication.java
+ it.vizzarro.torganizer.TorganizerApplication
+it/vizzarro/torganizer/service/ServiceBase.java
+ it.vizzarro.torganizer.service.ServiceBase
+it/vizzarro/torganizer/utils/jsend/utils/JSendUtils.java
+ it.vizzarro.torganizer.utils.jsend.utils.JSendUtils
+ it.vizzarro.torganizer.utils.jsend.utils.JSendUtils$1
+it/vizzarro/torganizer/controllers/TournamentOrganizerController.java
+ it.vizzarro.torganizer.controllers.TournamentOrganizerController
+it/vizzarro/torganizer/utils/jsend/jackson/JacksonDataObjectDeserializer.java
+ it.vizzarro.torganizer.utils.jsend.jackson.JacksonDataObjectDeserializer
+it/vizzarro/torganizer/utils/jsend/IndexableJSendDataObject.java
+ it.vizzarro.torganizer.utils.jsend.IndexableJSendDataObject
+it/vizzarro/torganizer/utils/jsend/JSendStatus.java
+ it.vizzarro.torganizer.utils.jsend.JSendStatus
+it/vizzarro/torganizer/utils/jsend/BasicJSendDataObject.java
+ it.vizzarro.torganizer.utils.jsend.BasicJSendDataObject
+ it.vizzarro.torganizer.utils.jsend.BasicJSendDataObject$MapBasicJsendDataObject
+it/vizzarro/torganizer/utils/jsend/JSendResponse.java
+ it.vizzarro.torganizer.utils.jsend.JSendResponse
+it/vizzarro/torganizer/utils/jsend/JSendResponseStatus.java
+ it.vizzarro.torganizer.utils.jsend.JSendResponseStatus
+it/vizzarro/torganizer/utils/jsend/WritableIndexableJsendDataObject.java
+ it.vizzarro.torganizer.utils.jsend.WritableIndexableJsendDataObject
+it/vizzarro/torganizer/utils/jsend/JSendDataObject.java
+ it.vizzarro.torganizer.utils.jsend.JSendDataObject
+it/vizzarro/torganizer/utils/jsend/JSendConversionException.java
+ it.vizzarro.torganizer.utils.jsend.JSendConversionException
+it/vizzarro/torganizer/utils/jsend/jackson/JacksonJsendDataObject.java
+ it.vizzarro.torganizer.utils.jsend.jackson.JacksonJsendDataObject
+ it.vizzarro.torganizer.utils.jsend.jackson.JacksonJsendDataObject$1
+ it.vizzarro.torganizer.utils.jsend.jackson.JacksonJsendDataObject$JacksonIndexableJsendDataObject
+it/vizzarro/torganizer/controllers/TournamentController.java
+ it.vizzarro.torganizer.controllers.TournamentController
+it/vizzarro/torganizer/service/TournamentService.java
+ it.vizzarro.torganizer.service.TournamentService
+it/vizzarro/torganizer/service/ServiceException.java
+ it.vizzarro.torganizer.service.ServiceException
+it/vizzarro/torganizer/service/TournamentServiceImpl.java
+ it.vizzarro.torganizer.service.TournamentServiceImpl

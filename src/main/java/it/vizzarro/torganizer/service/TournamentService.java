@@ -8,6 +8,7 @@ import it.vizzarro.torganizer.repository.TournamentFilter;
 public interface TournamentService {
 
 	
-	public List<Tournament> findAll(TournamentFilter filter);
-	public Tournament save(Tournament tournament );
+	List<Tournament> findAll(TournamentFilter filter);
+	Tournament findById(Long id) throws  ServiceException;
+	Tournament save(Tournament tournament );
 }

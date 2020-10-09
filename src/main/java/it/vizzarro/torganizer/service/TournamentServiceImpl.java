@@ -15,7 +15,7 @@ import it.vizzarro.torganizer.repository.TournamentRepo;
 import it.vizzarro.torganizer.repository.TournamentSpecification;
 
 /**
- * @author Utente
+ * @author Alessandro Vizzarro
  *
  */
 @Service
@@ -49,7 +49,17 @@ public class TournamentServiceImpl extends ServiceBase<Tournament,Tournament> im
 		getTournamentRepo().findAll(new TournamentSpecification(filter)).forEach( t -> result.add(t));
 		return result;
 	}
-	
+
+	@Override
+	public Tournament findById(Long id) throws ServiceException{
+		if (id != null) {
+			return getTournamentRepo().findById(id).get();
+		}else{
+			ServiceException se = new ServiceException();
+			throw se;
+		}
+	}
+
 	public Tournament save(Tournament tournament ) {
 		
 		    Tournament tournamentOld = new Tournament();
