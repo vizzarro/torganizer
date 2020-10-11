@@ -23,6 +23,7 @@ public class Team {
         this.tournament = tournament;
     }
 
+    @GeneratedValue(strategy= GenerationType.SEQUENCE, generator="TeamSeq")
     @Id
     public Long getId() {
         return id;
@@ -40,6 +41,7 @@ public class Team {
         this.code = code;
     }
 
+    @Enumerated(EnumType.STRING)
     public TeamType getType() {
         return type;
     }
@@ -58,7 +60,7 @@ public class Team {
         this.tournament = tournament;
     }
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     public Set<Partecipant> getPartecipants() {
         return partecipants;
     }

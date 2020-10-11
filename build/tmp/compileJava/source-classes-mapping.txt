@@ -25,8 +25,8 @@ it/vizzarro/torganizer/utils/jsend/JSendResponseStatus.java
  it.vizzarro.torganizer.utils.jsend.JSendResponseStatus
 it/vizzarro/torganizer/repository/TournamentFilter.java
  it.vizzarro.torganizer.repository.TournamentFilter
-it/vizzarro/torganizer/TorganizerApplication.java
- it.vizzarro.torganizer.TorganizerApplication
+it/vizzarro/torganizer/models/TeamType.java
+ it.vizzarro.torganizer.models.TeamType
 it/vizzarro/torganizer/controllers/TournamentController.java
  it.vizzarro.torganizer.controllers.TournamentController
 it/vizzarro/torganizer/service/CrudService.java
@@ -68,7 +68,9 @@ it/vizzarro/torganizer/service/ServiceBase.java
  it.vizzarro.torganizer.service.ServiceBase
 it/vizzarro/torganizer/models/Partecipant.java
  it.vizzarro.torganizer.models.Partecipant
-it/vizzarro/torganizer/models/TeamType.java
- it.vizzarro.torganizer.models.TeamType
+it/vizzarro/torganizer/repository/TeamRepo.java
+ it.vizzarro.torganizer.repository.TeamRepo
 it/vizzarro/torganizer/models/Team.java
  it.vizzarro.torganizer.models.Team
+it/vizzarro/torganizer/TorganizerApplication.java
+ it.vizzarro.torganizer.TorganizerApplication

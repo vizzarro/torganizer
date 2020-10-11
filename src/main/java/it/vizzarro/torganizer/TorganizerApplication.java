@@ -2,7 +2,10 @@ package it.vizzarro.torganizer;
 
 import java.util.Arrays;
 import java.util.Date;
+import java.util.HashSet;
 
+import it.vizzarro.torganizer.models.*;
+import it.vizzarro.torganizer.repository.TeamRepo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,10 +15,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 
-import it.vizzarro.torganizer.models.GameFormula;
-import it.vizzarro.torganizer.models.ModeTournament;
-import it.vizzarro.torganizer.models.Tournament;
-import it.vizzarro.torganizer.models.TypeTournament;
 import it.vizzarro.torganizer.repository.TournamentRepo;
 
 @SpringBootApplication
@@ -25,7 +24,8 @@ public class TorganizerApplication {
 	private static final Logger logger = LoggerFactory.getLogger(TorganizerApplication.class);
 	
 	@Autowired TournamentRepo tournamentRepo;
-	
+	@Autowired TeamRepo teamRepo;
+
 	public static void main(String[] args) {
 		SpringApplication.run(TorganizerApplication.class, args);
 	}
@@ -48,8 +48,15 @@ public class TorganizerApplication {
 	
 	private void itializeDatabase(){
 	
-		tournamentRepo.save(new Tournament(null, "313231", "Tournament 1", TypeTournament.Coppie, ModeTournament.DUPLICATO, GameFormula.NoveCarteConTallone, "Alessandro Vizzarro", "Napoli", 3, 6, true, new Date()));
-		tournamentRepo.save(new Tournament(null, "2356463", "Tournament 2", TypeTournament.Coppie, ModeTournament.DUPLICATO, GameFormula.NoveCarteConTallone, "Alessandro Vizzarro", "Napoli", 3, 6, true, new Date()));
-
+		Tournament t1 = tournamentRepo.save(new Tournament(null, "313231", "Tournament 1", TypeTournament.Coppie, ModeTournament.DUPLICATO, GameFormula.NoveCarteConTallone, "Alessandro Vizzarro", "Napoli", 3, 6, true, new Date()));
+		Tournament t2 = tournamentRepo.save(new Tournament(null, "2356463", "Tournament 2", TypeTournament.Coppie, ModeTournament.DUPLICATO, GameFormula.NoveCarteConTallone, "Alessandro Vizzarro", "Napoli", 3, 6, true, new Date()));
+		Team team1 = new Team();
+		team1.setCode("TEAM001");
+		team1.setTournament(t1);
+		team1.setType(TeamType.COUPLE);
+		team1.setPartecipants(new HashSet<>());
+		team1.getPartecipants().add(new Partecipant(null, "Francesco Giordano", "f.g@sfd.com"));
+		team1.getPartecipants().add(new Partecipant(null, "Fabrizio Giordano", "f.g@sfd.com"));
+		teamRepo.save(team1);
 	}
 }
