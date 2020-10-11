@@ -19,6 +19,7 @@ import it.vizzarro.torganizer.models.TypeTournament;
 import it.vizzarro.torganizer.repository.TournamentRepo;
 
 @SpringBootApplication
+
 public class TorganizerApplication {
 	
 	private static final Logger logger = LoggerFactory.getLogger(TorganizerApplication.class);

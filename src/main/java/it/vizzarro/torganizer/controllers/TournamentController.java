@@ -7,6 +7,7 @@ import it.vizzarro.torganizer.models.Tournament;
 import it.vizzarro.torganizer.repository.TournamentFilter;
 import it.vizzarro.torganizer.service.ServiceException;
 import it.vizzarro.torganizer.service.TournamentService;
+import it.vizzarro.torganizer.service.model.TournamentSO;
 import it.vizzarro.torganizer.utils.jsend.JSendResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -42,16 +43,20 @@ public class TournamentController {
 
 	@GetMapping
 	public ResponseEntity<JSendResponse> find(@Param("code") String code) {
-		TournamentFilter filter = new TournamentFilter();
-		filter.setCode(code);
-		List<Tournament> result = tournamentService.findAll(filter);
-		return ResponseEntity.ok(JSendResponse.success("tournaments",result));
+		try {
+			TournamentFilter filter = new TournamentFilter();
+			filter.setCode(code);
+			List<TournamentSO> result = tournamentService.find(filter);
+			return ResponseEntity.ok(JSendResponse.success("tournaments",result));
+		} catch (ServiceException e) {
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(JSendResponse.error( new Long(HttpStatus.INTERNAL_SERVER_ERROR.value()),e.getMessage()));
+		}
 	}
 
 	@GetMapping(value = "/{idTournament}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<JSendResponse> findById(@PathVariable("idTournament") Long id) {
 
-		Tournament result = null;
+		TournamentSO result = null;
 		try {
 			result = tournamentService.findById(id);
 			return ResponseEntity.ok(JSendResponse.success("tournament",result));
@@ -61,10 +66,10 @@ public class TournamentController {
 	}
 	
 	@PostMapping
-	public ResponseEntity<JSendResponse> save(@RequestBody Tournament tournament) {
+	public ResponseEntity<JSendResponse> save(@RequestBody TournamentSO tournament) {
 		try {
 	
-			Tournament tournamentUpdated = getTournamentService().save(tournament);		
+			TournamentSO tournamentUpdated = getTournamentService().save(tournament);
 			return ResponseEntity.ok(JSendResponse.success("tournament",tournamentUpdated));
 		}catch (Exception ex) {
 			return ResponseEntity.badRequest().build();

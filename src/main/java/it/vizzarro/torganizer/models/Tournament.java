@@ -19,8 +19,21 @@ import javax.persistence.SequenceGenerator;
  *
  */
 @Entity(name = "TOURNAMENT")
-@SequenceGenerator(name="TournamentSeq", initialValue=1, allocationSize=50)
+@SequenceGenerator(name="TournamentSeq",sequenceName ="TOURNAMENT_SEQ", initialValue=1, allocationSize=1)
 public class Tournament  {
+
+	public static final String PROPERTY_ID = "id";
+	public static final String PROPERTY_CODE = "code";
+	public static final String PROPERTY_NAME = "name";
+	public static final String PROPERTY_TYPE = "type";
+	public static final String PROPERTY_MODE = "mode";
+	public static final String PROPERTY_GAME_FORMULA = "gFormula";
+	public static final String PROPERTY_REFEREE = "referee";
+	public static final String PROPERTY_SITE = "site";
+	public static final String PROPERTY_TIMES = "times";
+	public static final String PROPERTY_BOARDS = "boards";
+	public static final String PROPERTY_BONUS = "bonus";
+	public static final String PROPERTY_DATA_CREATION = "dataCreation";
 
 	private Long id;
 	private String code;

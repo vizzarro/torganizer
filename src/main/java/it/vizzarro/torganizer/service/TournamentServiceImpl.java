@@ -3,9 +3,10 @@
  */
 package it.vizzarro.torganizer.service;
 
-import java.beans.Introspector;
 import java.util.List;
+import java.util.stream.Collectors;
 
+import it.vizzarro.torganizer.service.model.TournamentSO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,12 +15,14 @@ import it.vizzarro.torganizer.repository.TournamentFilter;
 import it.vizzarro.torganizer.repository.TournamentRepo;
 import it.vizzarro.torganizer.repository.TournamentSpecification;
 
+
+
 /**
  * @author Alessandro Vizzarro
  *
  */
 @Service
-public class TournamentServiceImpl extends CrudServiceImpl<Tournament,TournamentFilter,Tournament,Long> implements TournamentService{
+public class TournamentServiceImpl extends CrudServiceImpl<TournamentSO,TournamentFilter,Tournament,Long> implements TournamentService{
 
 	private TournamentRepo tournamentRepo;
 
@@ -43,64 +46,87 @@ public class TournamentServiceImpl extends CrudServiceImpl<Tournament,Tournament
 
 
 	@Override
-	public List<Tournament> find(TournamentFilter filter) {
-		
-		return getTournamentRepo().findAll(new TournamentSpecification(filter));
+	public List<TournamentSO> find(TournamentFilter filter) {
+
+		return getTournamentRepo().findAll(new TournamentSpecification(filter)).stream().map(t -> toServiceObject(t)).collect(Collectors.toList());
 	}
 
 	@Override
-	public Tournament findById(Long id) throws ServiceException{
+	public TournamentSO findById(Long id) throws ServiceException{
 		if (id != null) {
-			return getTournamentRepo().findById(id).get();
+			return toServiceObject(getTournamentRepo().findById(id).get());
 		}else{
 			ServiceException se = new ServiceException();
 			throw se;
 		}
 	}
 
-	public Tournament save(Tournament tournament ) {
-		
-		    Tournament tournamentOld = new Tournament();
-			if (tournament.getId() != null) {
-				tournamentOld = getTournamentRepo().findById(tournament.getId()).get();
-			}
-			
-			populate(tournamentOld, tournament);
-			
-			return getTournamentRepo().save(tournamentOld);
+	@Override
+	public TournamentSO save(TournamentSO entityService) throws ServiceException {
+		Tournament tournamentOld = new Tournament();
+		if (entityService.getId() != null) {
+			tournamentOld = getTournamentRepo().findById(entityService.getId()).get();
+		}
+
+		populate(tournamentOld, entityService);
+
+		return  toServiceObject(getTournamentRepo().save(tournamentOld));
 	}
+
+
 
 
 
 
 	@Override
-	public void populate(Tournament target, Tournament source) {
-		
-		target.setId(source.getId());
-		target.setCode(source.getCode());
-		target.setName(source.getName());
-		target.setBoards(source.getBoards());
-		target.setBonus(source.getBonus());
-		target.setDataCreation(source.getDataCreation());
-		target.setgFormula(source.getgFormula());
-		target.setMode(source.getMode());
-		target.setReferee(source.getReferee());
-		target.setSite(source.getSite());
-		target.setTimes(source.getTimes());
-		target.setType(source.getType());
+	public void populate(Tournament target, TournamentSO source) throws ServiceException {
+		super.populate(target,source);
 	}
 
+	@Override
+	protected void validate(Tournament target, TournamentSO source) throws ServiceException {
 
+	}
 
 
 	@Override
-	public List<Tournament> findAll() throws ServiceException {
-		// TODO Auto-generated method stub
-		return getTournamentRepo().findAll(new TournamentSpecification(null));
+	public List<TournamentSO> findAll() throws ServiceException {
+		return getTournamentRepo().findAll(new TournamentSpecification(null)).stream().map(t -> toServiceObject(t)).collect(Collectors.toList());
 	}
 
 
+	@Override
+	protected void populateProperty(String name, Tournament target, TournamentSO source) {
+		switch (name) {
 
-	
+			case Tournament.PROPERTY_MODE:
+				target.setMode(source.getMode());
+				break;
+			case Tournament.PROPERTY_TYPE:
+				target.setType(source.getType());
+				break;
+			case Tournament.PROPERTY_GAME_FORMULA:
+				target.setgFormula(source.getgFormula());
+				break;
+		}
+	}
 
+	@Override
+	public TournamentSO toServiceObject(Tournament source) {
+		TournamentSO so = new TournamentSO();
+		so.setId(source.getId());
+		so.setCode(source.getCode());
+		so.setName(source.getName());
+		so.setBoards(source.getBoards());
+		so.setBonus(source.getBonus());
+		so.setDataCreation(source.getDataCreation());
+		so.setgFormula(source.getgFormula());
+		so.setMode(source.getMode());
+		so.setReferee(source.getReferee());
+		so.setSite(source.getSite());
+		so.setTimes(source.getTimes());
+		so.setType(source.getType());
+
+		return so;
+	}
 }
