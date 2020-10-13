@@ -6,15 +6,11 @@ package it.vizzarro.torganizer.service;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import it.vizzarro.torganizer.models.*;
+import it.vizzarro.torganizer.repository.*;
 import it.vizzarro.torganizer.service.model.TournamentSO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import it.vizzarro.torganizer.models.Tournament;
-import it.vizzarro.torganizer.repository.TournamentFilter;
-import it.vizzarro.torganizer.repository.TournamentRepo;
-import it.vizzarro.torganizer.repository.TournamentSpecification;
-
 
 
 /**
@@ -25,14 +21,20 @@ import it.vizzarro.torganizer.repository.TournamentSpecification;
 public class TournamentServiceImpl extends CrudServiceImpl<TournamentSO,TournamentFilter,Tournament,Long> implements TournamentService{
 
 	private TournamentRepo tournamentRepo;
+	private GameFormulaRepo gameFormulaRepo;
+	private ModeTournamentRepo modeTournamentRepo;
 
 	
 	/**
 	 * 
 	 */
-	public TournamentServiceImpl(@Autowired TournamentRepo tournamentRepo) {
+	public TournamentServiceImpl(@Autowired TournamentRepo tournamentRepo,
+								 @Autowired GameFormulaRepo gameFormulaRepo,
+								 @Autowired ModeTournamentRepo modeTournamentRepo) {
 		super();
 		this.tournamentRepo = tournamentRepo;
+		this.gameFormulaRepo = gameFormulaRepo;
+		this.modeTournamentRepo = modeTournamentRepo;
 	}
 	
 	
@@ -100,13 +102,22 @@ public class TournamentServiceImpl extends CrudServiceImpl<TournamentSO,Tourname
 		switch (name) {
 
 			case Tournament.PROPERTY_MODE:
-				target.setMode(source.getMode());
+				ModeTournament mt = modeTournamentRepo.findById(source.getGameFormula()).get();
+				target.setMode(mt);
 				break;
 			case Tournament.PROPERTY_TYPE:
-				target.setType(source.getType());
+				if (source.getType()!=null){
+					target.setType(TypeTournament.valueOf(source.getType()));
+				}
 				break;
 			case Tournament.PROPERTY_GAME_FORMULA:
-				target.setgFormula(source.getgFormula());
+				GameFormula gf = gameFormulaRepo.findById(source.getGameFormula()).get();
+				target.setGameFormula(gf);
+				break;
+			case Tournament.PROPERTY_GAME:
+				if (source.getGame()!=null) {
+					target.setGame(Game.valueOf(source.getGame()));
+				}
 				break;
 		}
 	}
@@ -120,12 +131,14 @@ public class TournamentServiceImpl extends CrudServiceImpl<TournamentSO,Tourname
 		so.setBoards(source.getBoards());
 		so.setBonus(source.getBonus());
 		so.setDataCreation(source.getDataCreation());
-		so.setgFormula(source.getgFormula());
-		so.setMode(source.getMode());
+		if (source.getGameFormula()!=null) so.setGameFormula(source.getGameFormula().getId());
+		if (source.getMode()!=null) so.setMode(source.getMode().getId());
 		so.setReferee(source.getReferee());
 		so.setSite(source.getSite());
 		so.setTimes(source.getTimes());
-		so.setType(source.getType());
+		if (source.getType()!=null) so.setType(source.getType().name());
+		if (source.getGame()!=null) so.setGame(source.getGame().name());
+
 
 		return so;
 	}

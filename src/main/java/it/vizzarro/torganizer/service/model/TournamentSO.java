@@ -1,5 +1,6 @@
 package it.vizzarro.torganizer.service.model;
 
+import it.vizzarro.torganizer.models.Game;
 import it.vizzarro.torganizer.models.GameFormula;
 import it.vizzarro.torganizer.models.ModeTournament;
 import it.vizzarro.torganizer.models.TypeTournament;
@@ -19,19 +20,21 @@ public class TournamentSO {
     public static final String PROPERTY_BOARDS = "boards";
     public static final String PROPERTY_BONUS = "bonus";
     public static final String PROPERTY_DATA_CREATION = "dataCreation";
+    public static final String PROPERTY_GAME = "game";
 
     private Long id;
     private String code;
     private String name;
-    private TypeTournament type;
-    private ModeTournament mode;
-    private GameFormula gFormula;
+    private String type;
+    private Long mode;
+    private Long gameFormula;
     private String referee;
     private String site;
     private Integer times;
     private Integer boards;
     private Boolean bonus;
     private Date dataCreation;
+    private String game;
 
 
 
@@ -41,21 +44,22 @@ public class TournamentSO {
 
 
 
-    public TournamentSO(Long id, String code, String name, TypeTournament type, ModeTournament mode, GameFormula gFormula,
-                      String referee, String site, Integer times, Integer boards, Boolean bonus, Date dataCreation) {
+    public TournamentSO(Long id, String code, String name, String type, Long mode, Long gameFormula,
+                      String referee, String site, Integer times, Integer boards, Boolean bonus, Date dataCreation,String game) {
         this();
         this.id = id;
         this.code = code;
         this.name = name;
         this.type = type;
         this.mode = mode;
-        this.gFormula = gFormula;
+        this.gameFormula = gameFormula;
         this.referee = referee;
         this.site = site;
         this.times = times;
         this.boards = boards;
         this.bonus = bonus;
         this.dataCreation = dataCreation;
+        this.game = game;
     }
 
     public Long getId() {
@@ -93,38 +97,38 @@ public class TournamentSO {
     }
 
 
-    public TypeTournament getType() {
+    public String getType() {
         return type;
     }
 
 
 
-    public void setType(TypeTournament type) {
+    public void setType(String type) {
         this.type = type;
     }
 
 
 
-    public ModeTournament getMode() {
+    public Long getMode() {
         return mode;
     }
 
 
 
-    public void setMode(ModeTournament mode) {
+    public void setMode(Long mode) {
         this.mode = mode;
     }
 
 
 
-    public GameFormula getgFormula() {
-        return gFormula;
+    public Long getGameFormula() {
+        return gameFormula;
     }
 
 
 
-    public void setgFormula(GameFormula gFormula) {
-        this.gFormula = gFormula;
+    public void setGameFormula(Long gameFormula) {
+        this.gameFormula = gameFormula;
     }
 
 
@@ -197,5 +201,13 @@ public class TournamentSO {
 
     public void setDataCreation(Date dataCreation) {
         this.dataCreation = dataCreation;
+    }
+
+    public String getGame() {
+        return game;
+    }
+
+    public void setGame(String game) {
+        this.game = game;
     }
 }

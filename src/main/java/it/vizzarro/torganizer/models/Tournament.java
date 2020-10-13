@@ -3,15 +3,9 @@
  */
 package it.vizzarro.torganizer.models;
 
+import javax.persistence.*;
 import java.util.Date;
-
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
+import java.util.Set;
 
 
 /**
@@ -34,21 +28,24 @@ public class Tournament  {
 	public static final String PROPERTY_BOARDS = "boards";
 	public static final String PROPERTY_BONUS = "bonus";
 	public static final String PROPERTY_DATA_CREATION = "dataCreation";
+	public static final String PROPERTY_GAME = "game";
+	public static final String PROPERTY_ROUNDS = "rounds";
 
 	private Long id;
 	private String code;
 	private String name;
 	private TypeTournament type;
 	private ModeTournament mode;
-	private GameFormula gFormula;
+	private GameFormula gameFormula;
 	private String referee;
 	private String site;
 	private Integer times;
 	private Integer boards;
 	private Boolean bonus;
 	private Date dataCreation;
-	
-	
+	private Game game;
+	private Set<RoundMatch> rounds;
+
 	
 	public Tournament() {
 		super();
@@ -57,20 +54,21 @@ public class Tournament  {
 
 
 	public Tournament(Long id, String code, String name, TypeTournament type, ModeTournament mode, GameFormula gFormula,
-			String referee, String site, Integer times, Integer boards, Boolean bonus, Date dataCreation) {
+			String referee, String site, Integer times, Integer boards, Boolean bonus, Date dataCreation,Game game) {
 		this();
 		this.id = id;
 		this.code = code;
 		this.name = name;
 		this.type = type;
 		this.mode = mode;
-		this.gFormula = gFormula;
+		this.gameFormula = gFormula;
 		this.referee = referee;
 		this.site = site;
 		this.times = times;
 		this.boards = boards;
 		this.bonus = bonus;
 		this.dataCreation = dataCreation;
+		this.game = game;
 	}
 
 
@@ -124,7 +122,8 @@ public class Tournament  {
 	}
 
 
-	@Enumerated(EnumType.STRING)
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "tournament_modality")
 	public ModeTournament getMode() {
 		return mode;
 	}
@@ -136,15 +135,16 @@ public class Tournament  {
 	}
 
 
-
-	public GameFormula getgFormula() {
-		return gFormula;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "game_formula")
+	public GameFormula getGameFormula() {
+		return gameFormula;
 	}
 
 
 
-	public void setgFormula(GameFormula gFormula) {
-		this.gFormula = gFormula;
+	public void setGameFormula(GameFormula gameFormula) {
+		this.gameFormula = gameFormula;
 	}
 
 
@@ -218,7 +218,22 @@ public class Tournament  {
 	public void setDataCreation(Date dataCreation) {
 		this.dataCreation = dataCreation;
 	}
-	
-	
-	
+
+	@Enumerated(EnumType.STRING)
+	public Game getGame() {
+		return game;
+	}
+
+	public void setGame(Game game) {
+		this.game = game;
+	}
+
+	@OneToMany(mappedBy = "tournament")
+	public Set<RoundMatch> getRounds() {
+		return rounds;
+	}
+
+	public void setRounds(Set<RoundMatch> rounds) {
+		this.rounds = rounds;
+	}
 }

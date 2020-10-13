@@ -6,6 +6,7 @@ package it.vizzarro.torganizer.repository;
 import java.util.Date;
 
 import it.vizzarro.torganizer.service.BaseFilter;
+import it.vizzarro.torganizer.service.ServiceException;
 
 /**
  * @author Alessandro Vizzarro
@@ -17,10 +18,9 @@ public class TournamentFilter extends BaseFilter{
 	private String code;
 	private Date dateCreation;
 	
-	/**
-	 * 
-	 */
-	public TournamentFilter() {
+
+	public TournamentFilter(String q) throws ServiceException {
+		super(q);
 	}
 
 	public String getName() {
@@ -46,7 +46,5 @@ public class TournamentFilter extends BaseFilter{
 	public void setDateCreation(Date dateCreation) {
 		this.dateCreation = dateCreation;
 	}
-
-	
 	
 }
