@@ -9,6 +9,7 @@ import it.vizzarro.torganizer.service.RoundMatchService;
 import it.vizzarro.torganizer.service.ServiceException;
 import it.vizzarro.torganizer.service.TournamentService;
 import it.vizzarro.torganizer.service.io.RoundMatchRequest;
+import it.vizzarro.torganizer.service.model.MatchSO;
 import it.vizzarro.torganizer.service.model.RoundMatchSO;
 import it.vizzarro.torganizer.service.model.TournamentSO;
 import it.vizzarro.torganizer.utils.jsend.JSendResponse;
@@ -77,6 +78,17 @@ public class TournamentController {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(JSendResponse.error( new Long(HttpStatus.INTERNAL_SERVER_ERROR.value()),e.getMessage()));
 		}
 	}
+
+	@GetMapping( value = "create/{gameType}",produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<JSendResponse> findById(@PathVariable("gameType") String gameType) {
+		TournamentSO result = null;
+		try {
+			result = tournamentService.createTournament(gameType);
+			return ResponseEntity.ok(JSendResponse.success("tournament",result));
+		} catch (ServiceException e) {
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(JSendResponse.error( new Long(HttpStatus.INTERNAL_SERVER_ERROR.value()),e.getMessage()));
+		}
+	}
 	
 	@PostMapping
 	public ResponseEntity<JSendResponse> save(@RequestBody TournamentSO tournament) {
@@ -107,9 +119,13 @@ public class TournamentController {
 			if (request.getTournament()==null) {
 				return ResponseEntity.badRequest().body(JSendResponse.fail().setData("errors","Tournament is required"));
 			}
-
 			RoundMatchSO rmUpdated = getRoundMatchService().save(request.getRound());
-
+			if (request.getMatches()!=null && !request.getMatches().isEmpty()) {
+				for (MatchSO so  : request.getMatches()) {
+					MatchSO mUpdated = matchService.save(so);
+					rmUpdated.getMatches().add(mUpdated.getId());
+				}
+			}
 			return ResponseEntity.ok(JSendResponse.success("round",rmUpdated));
 		}catch (Exception ex) {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();

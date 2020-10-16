@@ -3,7 +3,9 @@
  */
 package it.vizzarro.torganizer.service;
 
+import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 import it.vizzarro.torganizer.models.*;
@@ -141,5 +143,13 @@ public class TournamentServiceImpl extends CrudServiceImpl<TournamentSO,Tourname
 
 
 		return so;
+	}
+
+	@Override
+	public TournamentSO createTournament(String gameType) throws ServiceException {
+
+		Tournament t = new Tournament(null, UUID.randomUUID().toString(),null,null,null,null,null,null,1,1,false,new Date(),Game.valueOf(gameType));
+		t = getTournamentRepo().save(t);
+		return toServiceObject(t);
 	}
 }

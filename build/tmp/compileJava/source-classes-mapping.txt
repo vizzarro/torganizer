@@ -11,42 +11,52 @@ it/vizzarro/torganizer/utils/jsend/BasicJSendDataObject.java
  it.vizzarro.torganizer.utils.jsend.BasicJSendDataObject$MapBasicJsendDataObject
 it/vizzarro/torganizer/repository/GameFormulaRepo.java
  it.vizzarro.torganizer.repository.GameFormulaRepo
+it/vizzarro/torganizer/service/model/MatchSO.java
+ it.vizzarro.torganizer.service.model.MatchSO
 it/vizzarro/torganizer/models/Team.java
  it.vizzarro.torganizer.models.Team
 it/vizzarro/torganizer/service/model/GameFormulaSO.java
  it.vizzarro.torganizer.service.model.GameFormulaSO
-it/vizzarro/torganizer/swagger/SwaggerConfiguration.java
- it.vizzarro.torganizer.swagger.SwaggerConfiguration
+it/vizzarro/torganizer/configuration/WebConfig.java
+ it.vizzarro.torganizer.configuration.WebConfig
 it/vizzarro/torganizer/service/ServiceException.java
  it.vizzarro.torganizer.service.ServiceException
 it/vizzarro/torganizer/controllers/DatabaseLoader.java
  it.vizzarro.torganizer.controllers.DatabaseLoader
-it/vizzarro/torganizer/utils/jsend/JSendConversionException.java
- it.vizzarro.torganizer.utils.jsend.JSendConversionException
+it/vizzarro/torganizer/repository/ModeTournamentSpecification.java
+ it.vizzarro.torganizer.repository.ModeTournamentSpecification
 it/vizzarro/torganizer/utils/jsend/JSendResponseStatus.java
  it.vizzarro.torganizer.utils.jsend.JSendResponseStatus
 it/vizzarro/torganizer/models/Game.java
  it.vizzarro.torganizer.models.Game
+it/vizzarro/torganizer/service/MatchServiceImpl.java
+ it.vizzarro.torganizer.service.MatchServiceImpl
 it/vizzarro/torganizer/service/CrudService.java
  it.vizzarro.torganizer.service.CrudService
-it/vizzarro/torganizer/repository/ModeTournamentSpecification.java
- it.vizzarro.torganizer.repository.ModeTournamentSpecification
+it/vizzarro/torganizer/models/Match.java
+ it.vizzarro.torganizer.models.Match
 it/vizzarro/torganizer/service/GameFormulaService.java
  it.vizzarro.torganizer.service.GameFormulaService
+it/vizzarro/torganizer/repository/MatchRepo.java
+ it.vizzarro.torganizer.repository.MatchRepo
 it/vizzarro/torganizer/repository/TournamentRepo.java
  it.vizzarro.torganizer.repository.TournamentRepo
-it/vizzarro/torganizer/service/ModeTournamentService.java
- it.vizzarro.torganizer.service.ModeTournamentService
 it/vizzarro/torganizer/models/TeamType.java
  it.vizzarro.torganizer.models.TeamType
+it/vizzarro/torganizer/service/ModeTournamentService.java
+ it.vizzarro.torganizer.service.ModeTournamentService
+it/vizzarro/torganizer/service/RoundMatchService.java
+ it.vizzarro.torganizer.service.RoundMatchService
 it/vizzarro/torganizer/service/ModeTournamentServiceImpl.java
  it.vizzarro.torganizer.service.ModeTournamentServiceImpl
 it/vizzarro/torganizer/repository/GameFormulaSpecification.java
  it.vizzarro.torganizer.repository.GameFormulaSpecification
 it/vizzarro/torganizer/models/Tournament.java
  it.vizzarro.torganizer.models.Tournament
-it/vizzarro/torganizer/service/TournamentServiceImpl.java
- it.vizzarro.torganizer.service.TournamentServiceImpl
+it/vizzarro/torganizer/models/ModeTournament.java
+ it.vizzarro.torganizer.models.ModeTournament
+it/vizzarro/torganizer/repository/MatchFilter.java
+ it.vizzarro.torganizer.repository.MatchFilter
 it/vizzarro/torganizer/utils/jsend/WritableIndexableJsendDataObject.java
  it.vizzarro.torganizer.utils.jsend.WritableIndexableJsendDataObject
 it/vizzarro/torganizer/utils/jsend/JSendDataObject.java
@@ -55,12 +65,16 @@ it/vizzarro/torganizer/repository/ModeTournamentFilter.java
  it.vizzarro.torganizer.repository.ModeTournamentFilter
 it/vizzarro/torganizer/service/model/TournamentSO.java
  it.vizzarro.torganizer.service.model.TournamentSO
-it/vizzarro/torganizer/service/TournamentService.java
- it.vizzarro.torganizer.service.TournamentService
+it/vizzarro/torganizer/configuration/DatabaseConfig.java
+ it.vizzarro.torganizer.configuration.DatabaseConfig
+it/vizzarro/torganizer/service/MatchService.java
+ it.vizzarro.torganizer.service.MatchService
 it/vizzarro/torganizer/service/model/BaseDomainSO.java
  it.vizzarro.torganizer.service.model.BaseDomainSO
 it/vizzarro/torganizer/controllers/TournamentOrganizerController.java
  it.vizzarro.torganizer.controllers.TournamentOrganizerController
+it/vizzarro/torganizer/repository/RoundMatchSpecification.java
+ it.vizzarro.torganizer.repository.RoundMatchSpecification
 it/vizzarro/torganizer/utils/jsend/utils/JSendUtils.java
  it.vizzarro.torganizer.utils.jsend.utils.JSendUtils
  it.vizzarro.torganizer.utils.jsend.utils.JSendUtils$1
@@ -76,26 +90,36 @@ it/vizzarro/torganizer/service/CrudServiceImpl.java
  it.vizzarro.torganizer.service.CrudServiceImpl
 it/vizzarro/torganizer/models/BaseDomain.java
  it.vizzarro.torganizer.models.BaseDomain
+it/vizzarro/torganizer/service/TournamentServiceImpl.java
+ it.vizzarro.torganizer.service.TournamentServiceImpl
 it/vizzarro/torganizer/models/Image.java
  it.vizzarro.torganizer.models.Image
 it/vizzarro/torganizer/repository/GameFormulaFilter.java
  it.vizzarro.torganizer.repository.GameFormulaFilter
 it/vizzarro/torganizer/repository/ModeTournamentRepo.java
  it.vizzarro.torganizer.repository.ModeTournamentRepo
-it/vizzarro/torganizer/service/BaseFilter.java
- it.vizzarro.torganizer.service.BaseFilter
+it/vizzarro/torganizer/models/RoundMatch.java
+ it.vizzarro.torganizer.models.RoundMatch
 it/vizzarro/torganizer/repository/TeamRepo.java
  it.vizzarro.torganizer.repository.TeamRepo
 it/vizzarro/torganizer/models/GameFormula.java
  it.vizzarro.torganizer.models.GameFormula
 it/vizzarro/torganizer/models/Partecipant.java
  it.vizzarro.torganizer.models.Partecipant
+it/vizzarro/torganizer/service/model/RoundMatchSO.java
+ it.vizzarro.torganizer.service.model.RoundMatchSO
 it/vizzarro/torganizer/repository/TournamentFilter.java
  it.vizzarro.torganizer.repository.TournamentFilter
-it/vizzarro/torganizer/models/ModeTournament.java
- it.vizzarro.torganizer.models.ModeTournament
-it/vizzarro/torganizer/controllers/TournamentController.java
- it.vizzarro.torganizer.controllers.TournamentController
+it/vizzarro/torganizer/repository/RoundMatchRepo.java
+ it.vizzarro.torganizer.repository.RoundMatchRepo
+it/vizzarro/torganizer/utils/jsend/JSendConversionException.java
+ it.vizzarro.torganizer.utils.jsend.JSendConversionException
+it/vizzarro/torganizer/TorganizerApplication.java
+ it.vizzarro.torganizer.TorganizerApplication
+it/vizzarro/torganizer/service/io/RoundMatchRequest.java
+ it.vizzarro.torganizer.service.io.RoundMatchRequest
+it/vizzarro/torganizer/service/RoundMatchServiceImpl.java
+ it.vizzarro.torganizer.service.RoundMatchServiceImpl
 it/vizzarro/torganizer/utils/jsend/JSendData.java
  it.vizzarro.torganizer.utils.jsend.JSendData
 it/vizzarro/torganizer/utils/jsend/jackson/JacksonDataObjectDeserializer.java
@@ -104,15 +128,17 @@ it/vizzarro/torganizer/service/model/ModeTournamentSO.java
  it.vizzarro.torganizer.service.model.ModeTournamentSO
 it/vizzarro/torganizer/utils/jsend/JSendStatus.java
  it.vizzarro.torganizer.utils.jsend.JSendStatus
+it/vizzarro/torganizer/repository/RoundMatchFilter.java
+ it.vizzarro.torganizer.repository.RoundMatchFilter
 it/vizzarro/torganizer/utils/jsend/JSendResponse.java
  it.vizzarro.torganizer.utils.jsend.JSendResponse
-it/vizzarro/torganizer/models/RoundMatch.java
- it.vizzarro.torganizer.models.RoundMatch
-it/vizzarro/torganizer/repository/RoundMatchRepo.java
- it.vizzarro.torganizer.repository.RoundMatchRepo
-it/vizzarro/torganizer/models/Match.java
- it.vizzarro.torganizer.models.Match
-it/vizzarro/torganizer/configuration/DatabaseConfig.java
- it.vizzarro.torganizer.configuration.DatabaseConfig
-it/vizzarro/torganizer/TorganizerApplication.java
- it.vizzarro.torganizer.TorganizerApplication
+it/vizzarro/torganizer/service/TournamentService.java
+ it.vizzarro.torganizer.service.TournamentService
+it/vizzarro/torganizer/service/BaseFilter.java
+ it.vizzarro.torganizer.service.BaseFilter
+it/vizzarro/torganizer/controllers/TournamentController.java
+ it.vizzarro.torganizer.controllers.TournamentController
+it/vizzarro/torganizer/configuration/SecurityConfig.java
+ it.vizzarro.torganizer.configuration.SecurityConfig
+it/vizzarro/torganizer/swagger/SwaggerConfiguration.java
+ it.vizzarro.torganizer.swagger.SwaggerConfiguration

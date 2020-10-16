@@ -5,11 +5,16 @@ spring:
      console:
        enabled: true
        path: /console
+   security:
+     user:
+       name: admin
+       password: admin
    datasource:
      url: jdbc:h2:mem:testdb
      driver-class-name: org.h2.Driver
      username: sa
-     password: sa   
+     password: sa
+
 version: 1.0.0     
 server:
    port: 8080

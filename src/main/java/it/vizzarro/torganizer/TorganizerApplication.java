@@ -72,8 +72,13 @@ public class TorganizerApplication {
 		md8 = modeTournamentRepo.save(md8);
 
 
-		Tournament t1 = tournamentRepo.save(new Tournament(null, "313231", "Tournament 1", TypeTournament.Coppie, md1, gf1, "Alessandro Vizzarro", "Napoli", 3, 6, true, new Date(), Game.SCOPONE));
-		Tournament t2 = tournamentRepo.save(new Tournament(null, "2356463", "Tournament 2", TypeTournament.Coppie, md3, gf2, "Alessandro Vizzarro", "Napoli", 3, 6, true, new Date(), Game.SCOPONE));
+		Tournament t1 = tournamentRepo.save(new Tournament(null, "313231", "Tournament 1", TypeTournament.Coppie, md1, gf1, "Alessandro Vizzarro", "Napoli", 3, 8, true, new Date(), Game.SCOPONE));
+		Tournament t2 = tournamentRepo.save(new Tournament(null, "3266646", "Tournament 2", TypeTournament.Individuale, md4, gf2, "Alessandro Vizzarro", "Napoli", 3, 8, true, new Date(), Game.SCOPONE));
+		Tournament t3 = tournamentRepo.save(new Tournament(null, "437747", "Tournament 3", TypeTournament.Individuale, md6, gf2, "Alessandro Vizzarro", "Napoli", 50, 8, true, new Date(), Game.SCOPONE));
+		Tournament t4 = tournamentRepo.save(new Tournament(null, "743747", "Tournament 4", TypeTournament.Coppie, md5, gf2, "Alessandro Vizzarro", "Napoli", 3, 8, true, new Date(), Game.SCOPONE));
+		Tournament t5 = tournamentRepo.save(new Tournament(null, "7474747", "Tournament 5", TypeTournament.Squadre, md1, gf2, "Alessandro Vizzarro", "Napoli", 25, 8, true, new Date(), Game.SCOPONE));
+		Tournament t6 = tournamentRepo.save(new Tournament(null, "5778658568", "Tournament 6", TypeTournament.Squadre, md2, gf2, "Alessandro Vizzarro", "Napoli", 3, 10, true, new Date(), Game.SCOPONE));
+
 		Team team1 = new Team();
 		team1.setCode("TEAM001");
 		team1.setTournament(t1);

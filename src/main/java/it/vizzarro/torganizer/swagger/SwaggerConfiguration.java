@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.spi.DocumentationType;
@@ -21,4 +22,12 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
                     .apis(RequestHandlerSelectors.basePackage("it.vizzarro.torganizer.controllers")).build();
         }
 
+      /*  @Override
+        public void addResourceHandlers(ResourceHandlerRegistry registry) {
+            if (enableSwagger) {
+                registry.addResourceHandler("swagger-ui.html").addResourceLocations("classpath:/META-INF/resources/");
+                registry.addResourceHandler("/webjars/**").addResourceLocations("classpath:/META-INF/resources/webjars/");
+            }
+        }
+*/
     }
