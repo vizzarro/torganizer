@@ -1,9 +1,6 @@
 package it.vizzarro.torganizer;
 
-import java.util.Arrays;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 import it.vizzarro.torganizer.models.*;
 import it.vizzarro.torganizer.repository.*;
@@ -71,13 +68,17 @@ public class TorganizerApplication {
 		ModeTournament md8= new ModeTournament(null, "MD008", "SCRAMBLED", "SCRAMBLED",Game.SCOPONE,null);
 		md8 = modeTournamentRepo.save(md8);
 
-
-		Tournament t1 = tournamentRepo.save(new Tournament(null, "313231", "Tournament 1", TypeTournament.Coppie, md1, gf1, "Alessandro Vizzarro", "Napoli", 3, 8, true, new Date(), Game.SCOPONE));
-		Tournament t2 = tournamentRepo.save(new Tournament(null, "3266646", "Tournament 2", TypeTournament.Individuale, md4, gf2, "Alessandro Vizzarro", "Napoli", 3, 8, true, new Date(), Game.SCOPONE));
-		Tournament t3 = tournamentRepo.save(new Tournament(null, "437747", "Tournament 3", TypeTournament.Individuale, md6, gf2, "Alessandro Vizzarro", "Napoli", 50, 8, true, new Date(), Game.SCOPONE));
-		Tournament t4 = tournamentRepo.save(new Tournament(null, "743747", "Tournament 4", TypeTournament.Coppie, md5, gf2, "Alessandro Vizzarro", "Napoli", 3, 8, true, new Date(), Game.SCOPONE));
-		Tournament t5 = tournamentRepo.save(new Tournament(null, "7474747", "Tournament 5", TypeTournament.Squadre, md1, gf2, "Alessandro Vizzarro", "Napoli", 25, 8, true, new Date(), Game.SCOPONE));
-		Tournament t6 = tournamentRepo.save(new Tournament(null, "5778658568", "Tournament 6", TypeTournament.Squadre, md2, gf2, "Alessandro Vizzarro", "Napoli", 3, 10, true, new Date(), Game.SCOPONE));
+		Calendar c = Calendar.getInstance();
+		c.set(Calendar.HOUR_OF_DAY,0);
+		c.set(Calendar.MINUTE,0);
+		c.set(Calendar.SECOND,0);
+		c.set(Calendar.MILLISECOND,0);
+		Tournament t1 = tournamentRepo.save(new Tournament(null, "313231", "Tournament 1", TypeTournament.Coppie, md1, gf1, "Alessandro Vizzarro", "Napoli", 3, 8, true, c.getTime(), Game.SCOPONE));
+		Tournament t2 = tournamentRepo.save(new Tournament(null, "3266646", "Tournament 2", TypeTournament.Individuale, md4, gf2, "Alessandro Vizzarro", "Napoli", 3, 8, true,  c.getTime(), Game.SCOPONE));
+		Tournament t3 = tournamentRepo.save(new Tournament(null, "437747", "Tournament 3", TypeTournament.Individuale, md6, gf2, "Alessandro Vizzarro", "Napoli", 50, 8, true,  c.getTime(), Game.SCOPONE));
+		Tournament t4 = tournamentRepo.save(new Tournament(null, "743747", "Tournament 4", TypeTournament.Coppie, md5, gf2, "Alessandro Vizzarro", "Napoli", 3, 8, true,  c.getTime(), Game.SCOPONE));
+		Tournament t5 = tournamentRepo.save(new Tournament(null, "7474747", "Tournament 5", TypeTournament.Squadre, md1, gf2, "Alessandro Vizzarro", "Napoli", 25, 8, true,  c.getTime(), Game.SCOPONE));
+		Tournament t6 = tournamentRepo.save(new Tournament(null, "5778658568", "Tournament 6", TypeTournament.Squadre, md2, gf2, "Alessandro Vizzarro", "Napoli", 3, 10, true,  c.getTime(), Game.SCOPONE));
 
 		Team team1 = new Team();
 		team1.setCode("TEAM001");

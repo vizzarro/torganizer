@@ -56,7 +56,7 @@ public class DomainController {
         try {
             GameFormulaFilter filter = new GameFormulaFilter(q);
             List<GameFormulaSO> result = getGameFormulaService().find(filter);
-            return ResponseEntity.ok(JSendResponse.success("game_formulas",result));
+            return ResponseEntity.ok(JSendResponse.success("gameformulas",result));
         } catch (ServiceException e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(JSendResponse.error( new Long(HttpStatus.INTERNAL_SERVER_ERROR.value()),e.getMessage()));
         }

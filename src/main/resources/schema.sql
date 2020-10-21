@@ -50,7 +50,8 @@ CREATE TABLE TOURNAMENT (
   times INT,
   boards INT,
   bonus BOOLEAN,
-  date_creation DATE NOT NULL
+  date_creation DATE NOT NULL,
+  status VARCHAR(255)
 );
 ALTER TABLE TOURNAMENT ADD FOREIGN KEY ( tournament_modality) REFERENCES MODE_TOURNAMENT( id ) ;
 ALTER TABLE TOURNAMENT ADD FOREIGN KEY ( game_formula) REFERENCES GAME_FORMULA( id ) ;

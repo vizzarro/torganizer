@@ -16,7 +16,7 @@ public class TournamentFilter extends BaseFilter{
 	
 	private String name;
 	private String code;
-	private Date dateCreation;
+	private Long dateCreation;
 	
 
 	public TournamentFilter(String q) throws ServiceException {
@@ -39,11 +39,11 @@ public class TournamentFilter extends BaseFilter{
 		this.code = code;
 	}
 
-	public Date getDateCreation() {
+	public Long getDateCreation() {
 		return dateCreation;
 	}
 
-	public void setDateCreation(Date dateCreation) {
+	public void setDateCreation(Long dateCreation) {
 		this.dateCreation = dateCreation;
 	}
 	

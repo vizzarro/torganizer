@@ -102,9 +102,8 @@ public class TournamentServiceImpl extends CrudServiceImpl<TournamentSO,Tourname
 	@Override
 	protected void populateProperty(String name, Tournament target, TournamentSO source) {
 		switch (name) {
-
 			case Tournament.PROPERTY_MODE:
-				ModeTournament mt = modeTournamentRepo.findById(source.getGameFormula()).get();
+				ModeTournament mt = modeTournamentRepo.findById(source.getMode()).get();
 				target.setMode(mt);
 				break;
 			case Tournament.PROPERTY_TYPE:
@@ -119,6 +118,11 @@ public class TournamentServiceImpl extends CrudServiceImpl<TournamentSO,Tourname
 			case Tournament.PROPERTY_GAME:
 				if (source.getGame()!=null) {
 					target.setGame(Game.valueOf(source.getGame()));
+				}
+				break;
+			case Tournament.PROPERTY_STATUS:
+				if (source.getStatus()!=null) {
+					target.setStatus(TournamentStatus.valueOf(source.getStatus()));
 				}
 				break;
 		}
@@ -140,7 +144,7 @@ public class TournamentServiceImpl extends CrudServiceImpl<TournamentSO,Tourname
 		so.setTimes(source.getTimes());
 		if (source.getType()!=null) so.setType(source.getType().name());
 		if (source.getGame()!=null) so.setGame(source.getGame().name());
-
+		if (source.getStatus()!=null) so.setStatus(source.getStatus().name());
 
 		return so;
 	}

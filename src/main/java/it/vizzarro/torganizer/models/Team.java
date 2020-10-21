@@ -12,6 +12,9 @@ public class Team {
     private TeamType type;
     private Tournament tournament;
     private Set<Partecipant> partecipants;
+   // private String alias;
+   // private String aliasTeam;
+   // private String aliasSecond;
 
     public Team() {
     }

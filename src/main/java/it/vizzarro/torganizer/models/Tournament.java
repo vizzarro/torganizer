@@ -21,7 +21,7 @@ public class Tournament  {
 	public static final String PROPERTY_NAME = "name";
 	public static final String PROPERTY_TYPE = "type";
 	public static final String PROPERTY_MODE = "mode";
-	public static final String PROPERTY_GAME_FORMULA = "gFormula";
+	public static final String PROPERTY_GAME_FORMULA = "gameFormula";
 	public static final String PROPERTY_REFEREE = "referee";
 	public static final String PROPERTY_SITE = "site";
 	public static final String PROPERTY_TIMES = "times";
@@ -30,6 +30,8 @@ public class Tournament  {
 	public static final String PROPERTY_DATA_CREATION = "dataCreation";
 	public static final String PROPERTY_GAME = "game";
 	public static final String PROPERTY_ROUNDS = "rounds";
+	public static final String PROPERTY_STATUS = "status";
+
 
 	private Long id;
 	private String code;
@@ -45,6 +47,7 @@ public class Tournament  {
 	private Date dataCreation;
 	private Game game;
 	private Set<RoundMatch> rounds;
+	private TournamentStatus status;
 
 	
 	public Tournament() {
@@ -69,6 +72,7 @@ public class Tournament  {
 		this.bonus = bonus;
 		this.dataCreation = dataCreation;
 		this.game = game;
+		this.status  = TournamentStatus.NEW;
 	}
 
 
@@ -236,4 +240,14 @@ public class Tournament  {
 	public void setRounds(Set<RoundMatch> rounds) {
 		this.rounds = rounds;
 	}
+
+	@Enumerated(EnumType.STRING)
+	public TournamentStatus getStatus() {
+		return status;
+	}
+
+	public void setStatus(TournamentStatus status) {
+		this.status = status;
+	}
+
 }

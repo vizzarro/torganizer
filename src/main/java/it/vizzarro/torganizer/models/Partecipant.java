@@ -6,6 +6,8 @@ import javax.persistence.*;
 @SequenceGenerator(name="PartecipantSeq",sequenceName ="TOURNAMENT_PARTECIPIANT_SEQ", initialValue=1, allocationSize=1)
 public class Partecipant {
 
+    public static final String PROPERTY_NOMINATIVE = "nominative";;
+
     private Long id;
     private String nominative;
     private String email;

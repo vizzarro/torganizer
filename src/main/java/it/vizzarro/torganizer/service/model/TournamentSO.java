@@ -21,6 +21,7 @@ public class TournamentSO {
     public static final String PROPERTY_BONUS = "bonus";
     public static final String PROPERTY_DATA_CREATION = "dataCreation";
     public static final String PROPERTY_GAME = "game";
+    public static final String PROPERTY_STATUS = "status";
 
     private Long id;
     private String code;
@@ -35,7 +36,7 @@ public class TournamentSO {
     private Boolean bonus;
     private Date dataCreation;
     private String game;
-
+    private String status;
 
 
     public TournamentSO() {
@@ -45,7 +46,8 @@ public class TournamentSO {
 
 
     public TournamentSO(Long id, String code, String name, String type, Long mode, Long gameFormula,
-                      String referee, String site, Integer times, Integer boards, Boolean bonus, Date dataCreation,String game) {
+                      String referee, String site, Integer times, Integer boards, Boolean bonus,
+                        Date dataCreation,String game, String status) {
         this();
         this.id = id;
         this.code = code;
@@ -60,6 +62,7 @@ public class TournamentSO {
         this.bonus = bonus;
         this.dataCreation = dataCreation;
         this.game = game;
+        this.status = status;
     }
 
     public Long getId() {
@@ -209,5 +212,13 @@ public class TournamentSO {
 
     public void setGame(String game) {
         this.game = game;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

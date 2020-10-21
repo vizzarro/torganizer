@@ -41,22 +41,44 @@ public abstract class BaseFilter {
             for (PropertyDescriptor pd : beanSourceInfo.getPropertyDescriptors()) {
 
                 if (pd.getPropertyType()
-                        .isAssignableFrom(java.lang.String.class) ||
-                        pd.getPropertyType()
-                                .isAssignableFrom(java.lang.Long.class) ||
-                        pd.getPropertyType()
-                                .isAssignableFrom(java.lang.Boolean.class) ||
-                        pd.getPropertyType()
-                                .isAssignableFrom(java.lang.Integer.class) ||
-                        pd.getPropertyType()
-                                .isAssignableFrom(java.lang.Short.class) ||
-                        pd.getPropertyType()
-                                .isAssignableFrom(java.util.Date.class) ) {
-
+                        .isAssignableFrom(java.lang.String.class)) {
                     pd.getWriteMethod()
                             .invoke(this, mapParam.get(pd.getName()));
+                }
+                if (pd.getPropertyType()
+                                .isAssignableFrom(java.lang.Long.class) ){
+                    pd.getWriteMethod()
+                            .invoke(this, new Long((String)mapParam.get(pd.getName())));
+                }
+                if (pd.getPropertyType()
+                                .isAssignableFrom(java.lang.Boolean.class)) {
+                    pd.getWriteMethod()
+                            .invoke(this, new Boolean((String)mapParam.get(pd.getName())));
+                }
+
+                if (pd.getPropertyType()
+                        .isAssignableFrom(java.lang.Integer.class)) {
+                    pd.getWriteMethod()
+                            .invoke(this, new Integer((String)mapParam.get(pd.getName())));
+                }
+
+                if (pd.getPropertyType()
+                        .isAssignableFrom(java.lang.Short.class)) {
+                    pd.getWriteMethod()
+                            .invoke(this, new Short((String)mapParam.get(pd.getName())));
+                }
+                if (pd.getPropertyType()
+                        .isAssignableFrom(java.util.Date.class)) {
+
+                    Calendar c  =Calendar.getInstance();
+                    c.setTimeInMillis(new Long((String)mapParam.get(pd.getName())));
+
+                    pd.getWriteMethod()
+                            .invoke(this, c.getTime());
 
                 }
+
+
 
 
 

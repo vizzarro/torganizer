@@ -91,6 +91,16 @@ public class TournamentController {
 	}
 	
 	@PostMapping
+	public ResponseEntity<JSendResponse> insert(@RequestBody TournamentSO tournament) {
+		try {
+			TournamentSO tournamentUpdated = getTournamentService().save(tournament);
+			return ResponseEntity.ok(JSendResponse.success("tournament",tournamentUpdated));
+		}catch (Exception ex) {
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+		}
+	}
+
+	@PutMapping
 	public ResponseEntity<JSendResponse> save(@RequestBody TournamentSO tournament) {
 		try {
 			TournamentSO tournamentUpdated = getTournamentService().save(tournament);
